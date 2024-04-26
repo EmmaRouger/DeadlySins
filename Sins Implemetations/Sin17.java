@@ -18,7 +18,8 @@ public class Sin17 {
             System.err.println("Error creating the file: " + e.getMessage());
         }
 
-        // Attempt to read from the file
+        // Attempt to read from the file this should not give an error since file has
+        // read permissions
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {

@@ -18,6 +18,7 @@ public class Sin10 {
             }
 
             // Step 3: Construct the command with user input as an argument
+            // no command injection because input has been validated
             String[] command = { "cmd", "/c", "echo", userInput };
 
             // Step 4: Execute the command
@@ -32,7 +33,7 @@ public class Sin10 {
                 System.out.println(line);
             }
 
-            // Step 6: Handle errors
+            // Step 6: Handle errors, should not have any errors
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             System.err.println("Errors:");
             while ((line = errorReader.readLine()) != null) {
@@ -44,9 +45,9 @@ public class Sin10 {
         }
     }
 
-    // Method to validate user input
+    // helper Method to validate user input
     private static boolean isValidInput(String input) {
-        // Add your validation logic here, e.g., check for allowed characters
+        // only allows some character but not all
         return !input.isEmpty() && input.matches("[a-zA-Z0-9_\\-]+");
     }
 }
